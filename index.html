@@ -12,6 +12,10 @@
         <form id="cipher" autocomplete="off">
             <input id="input-origin" spellcheck="false" placeholder="fill the text" type="text" name="text">
         </form>
+        <div id="result"></div>
+        <div id="range-container">
+            <input type="range" id="range" value="10" min="1" max="20" oninput="this.nextEelementSibling.value = this.value ">
+        </div>
     </main>
 </body>
 </html>
