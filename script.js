@@ -1,23 +1,25 @@
 const alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","Ñ","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-const inputOrigin = document.getElementById('input-origin');
+const originImput = document.getElementById('input-origin');
 const cipher = document.getElementById('cipher');
 const result = document.getElementById('result');
-const range-id = document.getElementById('range-id');
-const range-id = document.getElementById('range-id');
-const shifMessage = () => {
-    const wordArray = [...inputOrigin.value.toUpperCase()];
+const rangeId1 = document.getElementById('range'); // Nombre único para la primera constante
+
+
+const shiftMessage = () => {
+    const wordArray = [...originImput.value.toUpperCase()];
     printChar(0, wordArray);
 }
+
 const printChar = (currentLetterIndex, wordArray) => {
     if(wordArray.length === currentLetterIndex) return;
-    inputOrigin.value = inputOrigin.value.substring(1)
+    originImput.value = originImput.value.substring(1)
     const spanChar = document.createElement("span");
     result.appendChild(spanChar);
     animateChar(spanChar)
         .then( () => {
             const charUnencoded = wordArray[currentLetterIndex];
             spanChar.innerHTML = alphabet.includes(charUnencoded) ? 
-                alphabet[(alphabet.indexOf(charUnencoded) + parseInt(rangerange-id.value)) % alphabet.length] : 
+                alphabet[(alphabet.indexOf(charUnencoded) + parseInt(rangeId1.value)) % alphabet.length] : 
                 charUnencoded
             printChar(currentLetterIndex + 1, wordArray);
         });
@@ -35,9 +37,11 @@ const animateChar = spanChar => {
         }, 50);
     });
 }
-const submit = e => {
+
+const onsubmit = e => {
     e.preventDefault();
     result.innerHTML = '';
-    shifMessage()
+    shiftMessage()
 }
-ciphercipher.onsubmit = submit;
+cipher.addEventListener('submit', onsubmit);
+cipher.onsubmit = onsubmit;
